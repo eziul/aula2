@@ -6,8 +6,8 @@ const server = restify.createServer()
 server.use(restify.plugins.queryParser())
 server.use(restify.plugins.bodyParser())
 
-server.get("/hello", (req, resp, next) => {
-    resp.send(200, "Hello World")
+server.get("/Ola", (req, resp, next) => {
+    resp.send(200, "Laboratorio aplicação de API em Node.js")
 })
 
 

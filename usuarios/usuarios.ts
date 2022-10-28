@@ -29,6 +29,24 @@ export class UsuarioRepository {
         })
     }
 
+    alterarUsuario = (req: restify.Request, resp: restify.Response, next: restify.Next) => {
+        this.db.run('UPDATE usuario SET nome = ?, login = ?, senha = ? WHERE id = ?',
+         req.body.nome, 
+         req.body.login, 
+         req.body.senha, 
+         req.params.id,
+
+         (error) => {
+            if (error) {
+                resp.send(500)
+            } else {
+                resp.send(200, + req.body.none + "Usuário foi alterado com sucesso!")
+            }
+        })
+    }
+
+
+
     deletarUsuario = (req, resp) => {
         this.db.run("DELETE FROM usuario WHERE id =?", req.params.id, (error) => {
             if (error) {

@@ -15,8 +15,8 @@ var usuarioRep = new UsuarioRepository()
 
 server.post("/usuario", usuarioRep.criarUsuario)
 server.get("/usuarios", usuarioRep.todosUsuarios)
-
 server.del("/usuario/:id", usuarioRep.deletarUsuario)
+server.put("/usuario/:id", usuarioRep.alterarUsuario)
 
 server.listen(3000, ()=> {
     console.log("Server is on-line")

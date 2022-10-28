@@ -24,11 +24,21 @@ export class UsuarioRepository {
             if (error) {
                 resp.send(500)
             } else {
-                resp.send(204)
+                resp.send(200, "O usuario" + req.body.none + "foi adicionado com sucesso")
             }
         })
     }
 
+    deletarUsuario = (req, resp) => {
+        this.db.run("DELETE FROM usuario WHERE id =?", req.params.id, (error) => {
+            if (error) {
+                resp.send(500, error.message)
+            }else {
+                resp.send(200, "O usuario foi excluido!!!")
+            }
+        })
+    }    
+    
     todosUsuarios = (req: restify.Request, resp: restify.Response, next: restify.Next) => {
         var usuarios: Usuario[] = []
         this.db.all("select * from usuario", (error, rows) => {
